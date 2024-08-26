@@ -4,11 +4,12 @@
   "description": "Following the book from the angular course [here]:(https://s3-us-west-1.amazonaws.com/angular-university/typescript-ebook/Typescript_Jumpstart)",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+        "demo": "./node_modules/.bin/ts-node ./index.ts"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "ts-node": "^10.9.2",
     "typescript": "^5.5.4"
   },
   "dependencies": {
