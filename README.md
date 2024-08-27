@@ -1,6 +1,6 @@
 # Learning TypeScript
 
-Following the book from the angular course [here]:(https://s3-us-west-1.amazonaws.com/angular-university/typescript-ebook/Typescript_Jumpstart)
+Following the book from the angular course [here](https://s3-us-west-1.amazonaws.com/angular-university/typescript-ebook/Typescript_Jumpstart)
 
 ## Type Interfaces and Annotations
 
