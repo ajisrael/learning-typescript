@@ -4,7 +4,7 @@
   "description": "Following the book from the angular course [here]:(https://s3-us-west-1.amazonaws.com/angular-university/typescript-ebook/Typescript_Jumpstart)",
   "main": "index.js",
   "scripts": {
-        "demo": "./node_modules/.bin/ts-node ./test.ts"
+    "demo": "./node_modules/.bin/ts-node ./test.ts"
   },
   "author": "",
   "license": "ISC",
@@ -13,6 +13,7 @@
     "typescript": "^5.5.4"
   },
   "dependencies": {
+    "axios": "^1.7.5",
     "uuid": "^10.0.0"
   }
 }
