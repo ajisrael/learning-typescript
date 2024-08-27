@@ -158,6 +158,91 @@ variables that it cannot infer the type.
 }
 ```
 
+### Writing Node programs using the standard Promise API
+
+```bash
+npm install --save request
+npm install --save request-promise
+```
+
+These libraries together return Promise-like types that are compatible with ES6 promises.
+
+### Using Node require in Typescript programs
+
+`request-promise` is has the same API as `request` but it returns promises. To use it we can start with a plain node module, like this:
+
+```typescript
+const rp = require('request-promise');
+```
+
+But this will cause an error since there is no type definition for `require`.
+
+To resolve this, we need to install node types:
+
+```bash
+npm install @types/node --save-dev
+```
+
+### What is @types , when should I use it and why?
+
+The `@types` scoped package has a lot of useful type definitions.
+
+The TS compiler will look inside `node_modules/@types` during compilation
+
+Only use these types if they are not included in the library by default
+
+### Using Request Promise to build a type safe promise call
+
+Start by uninstalling `axios` and get the types for `request-promise`
+
+```bash
+npm uninstall axios --save
+npm instal --save-dev @types/request-promise
+```
+
+Now we can have something like this.
+
+```typescript
+import * as rp from 'request-promise';
+
+interface Lesson {
+	id:number;
+	description: string;
+}
+
+function getLesson(lessonId:number): Promise<Lesson> {
+	return rp.get(`lessons/${lessonId}`);
+}
+
+const promise = getLesson(1);
+
+promise.then(lesson => {
+	// .... we want this lesson variable to be implicitly of type Lesson
+});
+```
+
+There is a catch though. Look at the following code example:
+
+```typescript
+import * as rp from 'request-promise';
+
+interface Lesson {
+    id:number;
+    description: string;
+}
+
+function getLesson(lessonId:number): Promise<Lesson> {
+    return rp.get(`lessons/${lessonId}`)
+        .then((lesson:any) => Promise.resolve(lesson.description));
+}
+```
+** From the book : pg 35 **
+The function is returning a Promise of string, because the lesson has been transformed into a string
+by the then clause. But yet the program compiles without any error.
+**
+
+So you need to be careful with what you rely on type definitions to do
+
 ## Notes
 
 ### Any type
