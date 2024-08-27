@@ -129,6 +129,35 @@ ls -1 *.d.ts
 
 This will output `index.d.ts` which is a file that typescript looks for, for type definitions of a package, as denoted by the `.d.ts`
 
+Now we have type definitions that we can use, like what is shown in the example below:
+
+```typescript
+import axios from "axios";
+import { AxiosPromise } from "axios";
+
+const response: AxiosPromise = axios.get('/lessons', {
+	...
+});
+```
+
+`AxiosPromise` is something we can use right out of the box.
+
+### Make the most of Typescript type definitions
+
+Navigate to `tsconfig.json` and set `noImplicitAny` to true. This will make sure the compiler doesn't imlicitly assign the `any` type to 
+variables that it cannot infer the type.
+
+```json
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "es5",
+        "noImplicitAny": true,
+        "sourceMap": false
+    }
+}
+```
+
 ## Notes
 
 ### Any type
