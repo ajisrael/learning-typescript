@@ -111,3 +111,29 @@ Then update `package.json` to have a script to run the file
     ...
 }
 ```
+
+### NPM and Type Definitions
+
+Some modules ship with their own types. The following is an example of just that:
+
+```bash
+npm install --save axios
+```
+
+Axois comes with it's own built in type definitions:
+
+```bash
+cd node_modules/axios
+ls -1 *.d.ts
+```
+
+This will output `index.d.ts` which is a file that typescript looks for, for type definitions of a package, as denoted by the `.d.ts`
+
+## Notes
+
+### Any type
+
+The any type allows for potentially any property, like plain JS.
+So basically back to writing plain JS with no benefits of TS
+
+
